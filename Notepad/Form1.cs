@@ -46,7 +46,7 @@ namespace Notepad
             saveDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             if (this.Text != "Untitled")
             {
-                richTextBox.SaveFile(this.Text);
+                richTextBox.SaveFile(this.Text, RichTextBoxStreamType.PlainText);
             }else
                 if(saveDialog.ShowDialog()==DialogResult.OK)
             { richTextBox.SaveFile(saveDialog.FileName, RichTextBoxStreamType.PlainText);
