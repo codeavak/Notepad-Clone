@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Notepad
@@ -16,7 +9,7 @@ namespace Notepad
 
         public Form1()
         {
-           
+
             InitializeComponent();
             this.Text = "Untitled";
         }
@@ -31,12 +24,12 @@ namespace Notepad
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            if (fileDialog.ShowDialog()== DialogResult.OK)
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 richTextBox.LoadFile(fileDialog.FileName, RichTextBoxStreamType.PlainText);
                 FileName = fileDialog.FileName;
                 this.Text = FileName;
-                
+
             }
         }
 
@@ -47,9 +40,11 @@ namespace Notepad
             if (this.Text != "Untitled")
             {
                 richTextBox.SaveFile(this.Text, RichTextBoxStreamType.PlainText);
-            }else
-                if(saveDialog.ShowDialog()==DialogResult.OK)
-            { richTextBox.SaveFile(saveDialog.FileName, RichTextBoxStreamType.PlainText);
+            }
+            else
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                richTextBox.SaveFile(saveDialog.FileName, RichTextBoxStreamType.PlainText);
                 this.Text = saveDialog.FileName;
             }
         }
@@ -57,7 +52,7 @@ namespace Notepad
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveDialog = new SaveFileDialog();
-                saveDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
                 richTextBox.SaveFile(saveDialog.FileName, RichTextBoxStreamType.PlainText);
@@ -80,22 +75,25 @@ namespace Notepad
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (richTextBox.SelectedText != "")
-                // Cut the selected text in the control and paste it into the Clipboard.
+                // copy the selected text in the control and paste it into the Clipboard.
                 richTextBox.Copy();
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // paste the selected text in the control and paste it into the Clipboard.
             richTextBox.Paste();
         }
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // undo changes to text
             richTextBox.Undo();
         }
 
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // redo changes to text
             richTextBox.Redo();
         }
 
@@ -113,7 +111,7 @@ namespace Notepad
         {
             ColorDialog cd = new ColorDialog();
             cd.Color = richTextBox.BackColor;
-            if(cd.ShowDialog()==DialogResult.OK)
+            if (cd.ShowDialog() == DialogResult.OK)
             { richTextBox.BackColor = cd.Color; }
         }
 
